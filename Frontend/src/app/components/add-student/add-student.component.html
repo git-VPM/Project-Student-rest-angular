@@ -1,0 +1,47 @@
+<div>
+    <div class="submit-form">
+        <div *ngIf="!submitted">
+            <div class="form-group">
+                <label for="name">Student Name</label>
+                <input type="text" class="form-control" id="name" required [(ngModel)]="student.name" name="name" />
+            </div>
+            <div class="form-group">
+                <label for="reg">Registration Number</label>
+                <input style="text-transform:uppercase" type="text" class="form-control" id="reg" required
+                    [(ngModel)]="student.reg" name="reg" />
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <ul for="gender">Male
+                    <input type="radio" id="male" name="gender" value="Male" required [(ngModel)]="student.gender" />
+                </ul>
+                <ul for="gender">Female
+                    <input type="radio" id="female" name="gender" value="Female" required
+                        [(ngModel)]="student.gender" />
+                </ul>
+            </div>
+            <div class="form-group">
+                <label for="date">Select Date of Birth </label>
+                <input type="date" class="form-control" id="date" name="date" required [(ngModel)]="student.dob">
+            </div>
+            <div class="form-group">
+                <label for="reg">Address</label>
+                <textarea class="form-control" id="address" required [(ngModel)]="student.address" name="address"
+                    rows="4" cols="50"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="dist">District &nbsp;</label>
+                <select name="dist" id="dist" required [(ngModel)]="student.fk_dist">
+                    <option *ngFor="let item of dist; index as i;" value="{{item.pk_bint_id}}">{{item.vchr_name}}
+                    </option>
+                </select>
+            </div>
+
+            <button (click)="saveStudent()" class="btn btn-success">Submit</button>
+        </div>
+        <div *ngIf="submitted">
+            <h4>Student was submitted successfully!</h4>
+            <button class="btn btn-success" (click)="newStudent()">Add</button>
+        </div>
+    </div>
+</div>

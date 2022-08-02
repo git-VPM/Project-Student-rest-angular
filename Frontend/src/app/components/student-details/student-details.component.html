@@ -1,0 +1,69 @@
+<div>
+    <div *ngIf="currentStudent.id" class="edit-form">
+        <h4>Student</h4>
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" [(ngModel)]="currentStudent.name" name="name"
+                    ngDefaultControl />
+            </div>
+            <!-- <div class="form-group">
+                <label for="reg">Registration Number</label>
+                <input type="text" class="form-control" id="reg" [(ngModel)]="currentStudent.reg" name="reg"
+                    ngDefaultControl />
+            </div> -->
+
+            <div>
+                <label><strong>Registration Number:</strong></label>
+                {{ currentStudent.reg }}
+            </div>
+
+            <!-- <div>
+                <mat-radio-group aria-label="Gender" [(ngModel)]="currentStudent.gender" name="gender" ngDefaultControl>
+                    <mat-radio-button value="Male">Male</mat-radio-button>
+                    <mat-radio-button value="Female">Female</mat-radio-button>
+                </mat-radio-group>
+            </div> -->
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <ul for="gender">Male
+                    <input type="radio" name="gender" value="Male" [(ngModel)]="currentStudent.gender" />
+                </ul>
+                <ul for="gender">Female
+                    <input type="radio" name="gender" value="Female" [(ngModel)]="currentStudent.gender" />
+                </ul>
+            </div>
+
+            <div class="form-group">
+                <label for="reg">Date of Birth</label>
+                <input type="date" class="form-control" id="dob" [(ngModel)]="currentStudent.dob" name="dob"
+                    ngDefaultControl />
+            </div>
+            <div class="form-group">
+                <label for="reg">Address</label>
+                <textarea class="form-control" id="address" [(ngModel)]="currentStudent.address" name="address"
+                    ngDefaultControl rows="4" cols="50"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="dist">District &nbsp;</label>
+                <select name="dist" id="dist" [(ngModel)]="currentStudent.fk_dist">
+                    <option *ngFor="let item of dist; index as i;" value="{{item.pk_bint_id}}">{{item.vchr_name}}
+                    </option>
+                </select>
+            </div>
+
+        </form>
+        <button class="badge badge-danger mr-2" (click)="deleteStudent()">
+            Delete
+        </button>
+        <button type="submit" class="badge badge-success mb-2" (click)="updateStudent()">
+            Update
+        </button>
+        <p>{{ message }}</p>
+    </div>
+    <div *ngIf="!currentStudent.id">
+        <br />
+        <p>Cannot access this Student...</p>
+    </div>
+</div>

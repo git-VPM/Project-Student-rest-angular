@@ -1,0 +1,64 @@
+<div class="list row">
+    <!-- <div class="col-md-8">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="name" name="name"
+                ngDefaultControl />
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" (click)="searchName()">
+                    Search
+                </button>
+            </div>
+        </div>
+    </div> -->
+    <div class="col-md-6">
+        <h4>Students List</h4>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let student of students; let i = index"
+                [class.active]="i == currentIndex" (click)="setActiveStudent(student, i)">
+                {{ student.name }}
+            </li>
+        </ul>
+        <button class="m-3 btn btn-sm btn-danger" (click)="removeAllStudents()">
+            Remove All
+        </button>
+    </div>
+    <div class="col-md-6">
+        <div *ngIf="currentStudent.id">
+            <h4>Student Details</h4>
+            <div>
+                <label><strong>Name:</strong></label> {{ currentStudent.name }}
+            </div>
+            <div>
+                <label><strong>Registration Number:</strong></label>
+                {{ currentStudent.reg }}
+            </div>
+            <div>
+                <label><strong>Gender:</strong></label>
+                {{ currentStudent.gender }}
+            </div>
+            <div>
+                <label><strong>Date of Birth:</strong></label>
+                {{ currentStudent.dob | date:'dd-MM-yyyy' }}
+            </div>
+            <div>
+                <label><strong>Address:</strong></label>
+                {{ currentStudent.address }}
+            </div>
+            <div>
+                <label><strong>District:</strong></label>
+                {{ currentDist.vchr_name }}
+            </div>
+            <a class="badge badge-warning" routerLink="/students/{{ currentStudent.id }}">
+                Edit
+            </a>
+            &nbsp;
+            <button class="badge badge-danger mr-2" (click)="deleteStudent()">
+                Delete
+            </button>
+        </div>
+        <div *ngIf="!currentStudent">
+            <br />
+            <p>Please click on a Student...</p>
+        </div>
+    </div>
+</div>
